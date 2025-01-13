@@ -16,7 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
-
+    private boolean isTest;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -25,6 +25,7 @@ public class TreasureHunter {
         currentTown = null;
         hunter = null;
         hardMode = false;
+        isTest = false;
     }
 
     /**
@@ -53,6 +54,10 @@ public class TreasureHunter {
         if (hard.equals("y")) {
             hardMode = true;
         }
+        if (hard.equals("test")) {
+            hunter.setGold(100);
+            isTest = true;
+        }
     }
 
     /**
@@ -73,7 +78,6 @@ public class TreasureHunter {
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
         Shop shop = new Shop(markdown);
-
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class

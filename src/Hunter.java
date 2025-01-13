@@ -39,6 +39,10 @@ public class Hunter {
         }
     }
 
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
     /**
      * Buys an item from a shop.
      *
@@ -46,6 +50,7 @@ public class Hunter {
      * @param costOfItem The cost of the item.
      * @return true if the item is successfully bought.
      */
+
     public boolean buyItem(String item, int costOfItem) {
         if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
             return false;

@@ -84,6 +84,10 @@ public class Town {
         printMessage = shop.enter(hunter, choice);
     }
 
+    public Shop getShop() {
+        return shop;
+    }
+
     /**
      * Gives the hunter a chance to fight for some gold.<p>
      * The chances of finding a fight and winning the gold are based on the toughness of the town.<p>
