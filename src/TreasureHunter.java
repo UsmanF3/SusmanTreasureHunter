@@ -78,6 +78,7 @@ public class TreasureHunter {
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
         Shop shop = new Shop(markdown);
+
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
@@ -103,12 +104,12 @@ public class TreasureHunter {
             System.out.println("***");
             System.out.println(hunter.infoString());
             System.out.println(currentTown.infoString());
-            System.out.println("(B)uy something at the shop.");
-            System.out.println("(S)ell something at the shop.");
-            System.out.println("(E)xplore surrounding terrain.");
-            System.out.println("(M)ove on to a different town.");
-            System.out.println("(L)ook for trouble!");
-            System.out.println("Give up the hunt and e(X)it.");
+            System.out.println(Colors.GREEN + "(B)" + Colors.RESET + "uy something at the shop.");
+            System.out.println(Colors.GREEN + "(S)" + Colors.RESET + "ell something at the shop.");
+            System.out.println(Colors.GREEN + "(E)" + Colors.RESET + "xplore surrounding terrain.");
+            System.out.println(Colors.GREEN + "(M)" + Colors.RESET + "ove on to a different town.");
+            System.out.println(Colors.GREEN + "(L)" + Colors.RESET + "ook for trouble!");
+            System.out.println("Give up the hunt and e" + Colors.GREEN + "(X)" + Colors.RESET + "it.");
             System.out.println();
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();

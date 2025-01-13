@@ -64,7 +64,7 @@ public class Shop {
             if (cost == 0) {
                 System.out.println("We don't want none of those.");
             } else {
-                System.out.print("It'll get you " + cost + " gold. Sell it (y/n)? ");
+                System.out.print("It'll get you " + cost + Colors.YELLOW + " gold. " + Colors.RESET + "Sell it (y/n)? ");
                 String option = SCANNER.nextLine().toLowerCase();
                 if (option.equals("y")) {
                     sellItem(item);
@@ -81,11 +81,11 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = Colors.PURPLE + "Water: " + Colors.RESET + WATER_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Rope: " + Colors.RESET + ROPE_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Machete: " + Colors.RESET + MACHETE_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Horse: " + Colors.RESET + HORSE_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Boat: " + Colors.RESET + BOAT_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
         return str;
     }
 
@@ -97,9 +97,9 @@ public class Shop {
     public void buyItem(String item) {
         int costOfItem = checkMarketPrice(item, true);
         if (customer.buyItem(item, costOfItem)) {
-            System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+            System.out.println("Ye' got yerself a " + Colors.PURPLE + item + Colors.RESET+ ". Come again soon.");
         } else {
-            System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
+            System.out.println("Hmm, either you don't have enough " + Colors.YELLOW + "gold " + Colors.RESET + "or you've already got one of those!");
         }
     }
 
