@@ -17,6 +17,7 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
     private boolean isTest;
+    private static boolean gameOver = false;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -53,7 +54,7 @@ public class TreasureHunter {
         }
         if (hard.equals("test")) {
             isTest = true;
-            hunter = new Hunter(name, 100, isTest);
+            hunter = new Hunter(name, 0, isTest);
         } else {
             // set hunter instance variable
             hunter = new Hunter(name, 20);
@@ -99,7 +100,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while (!choice.equals("x")) {
+        while (!choice.equals("x")&&!gameOver) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -146,4 +147,10 @@ public class TreasureHunter {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
     }
+
+    public static void gameOver() {
+        System.out.println("\nGame Over!");
+        gameOver = true;
+    }
+
 }
