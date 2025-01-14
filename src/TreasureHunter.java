@@ -110,6 +110,7 @@ public class TreasureHunter {
             System.out.println(Colors.GREEN + "(E)" + Colors.RESET + "xplore surrounding terrain.");
             System.out.println(Colors.GREEN + "(M)" + Colors.RESET + "ove on to a different town.");
             System.out.println(Colors.GREEN + "(L)" + Colors.RESET + "ook for trouble!");
+            System.out.println(Colors.GREEN + "(D)" + Colors.RESET + "ig for gold.");
             System.out.println("Give up the hunt and e" + Colors.GREEN + "(X)" + Colors.RESET + "it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -137,6 +138,10 @@ public class TreasureHunter {
             currentTown.lookForTrouble();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+        } else if (choice.equals("d")) {
+            if(!hunter.hasItemInKit("shovel")) {
+                System.out.println("You can't dig for gold without a shovel");
+            }
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
