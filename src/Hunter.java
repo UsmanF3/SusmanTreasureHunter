@@ -19,16 +19,16 @@ public class Hunter {
     public Hunter(String hunterName, int startingGold, boolean testMode) {
         this.hunterName = hunterName;
         if (!testMode) {
-            kit = new String[5]; // only 5 possible items can be stored in kit
+            kit = new String[6]; // only 6 possible items can be stored in kit
         } else {
-            kit = new String[]{"water", "rope", "machete", "horse", "boat"};
+            kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots"};
         }
         gold = startingGold;
     }
 
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
-        kit = new String[5]; // only 5 possible items can be stored in kit
+        kit = new String[6]; // only 5 possible items can be stored in kit
         gold = startingGold;
     }
 
