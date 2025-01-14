@@ -18,6 +18,7 @@ public class TreasureHunter {
     private boolean hardMode;
     private boolean isTest;
     private static boolean gameOver = false;
+    private boolean searched;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -142,6 +143,10 @@ public class TreasureHunter {
         } else if (choice.equals("d")) {
             if(!hunter.hasItemInKit("shovel")) {
                 System.out.println("You can't dig for gold without a shovel");
+            } else {
+                if (!searched) {
+
+                }
             }
         } else if (choice.equals("h")){
             //a
