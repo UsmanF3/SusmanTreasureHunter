@@ -211,13 +211,4 @@ public class Hunter {
         return -1;
     }
 
-    public void dig() {
-        int successful = (int) (Math.random() * 2) + 1;
-        if (successful == 2) {
-            int amount = (int) (Math.random() * 20) + 1;
-            System.out.println("You dug up " + amount + Colors.YELLOW + "gold!" + Colors.RESET);
-        } else {
-            System.out.println("You dug but only found dirt.");
-        }
-    }
 }

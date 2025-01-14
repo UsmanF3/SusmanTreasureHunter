@@ -145,7 +145,10 @@ public class TreasureHunter {
                 System.out.println("You can't dig for gold without a shovel");
             } else {
                 if (!searched) {
-
+                    currentTown.dig();
+                    searched = true;
+                } else {
+                    System.out.println("Sorry, you already dug here.");
                 }
             }
         } else if (choice.equals("h")){
