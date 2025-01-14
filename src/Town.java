@@ -12,6 +12,7 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean gameOver;
+    private String treasure;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -26,6 +27,7 @@ public class Town {
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
         hunter = null;
+        treasure = null;
         printMessage = "";
 
         // higher toughness = more likely to be a tough town
@@ -47,6 +49,16 @@ public class Town {
      */
     public void hunterArrives(Hunter hunter) {
         this.hunter = hunter;
+        double rnd = Math.random();
+        if (rnd < (1.0 / 4)) {
+            treasure = "Crown";
+        } else if (rnd < (2.0 / 4)) {
+            treasure = "Trophy";
+        } else if (rnd < (3.0/4)) {
+            treasure = "Gem";
+        } else {
+            treasure = "Dust";
+        }
         printMessage = "Welcome to town, " + hunter.getHunterName() + ".";
         if (toughTown) {
             printMessage += "\nIt's pretty rough around here, so watch yourself.";

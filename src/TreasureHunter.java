@@ -19,6 +19,7 @@ public class TreasureHunter {
     private boolean isTest;
     private static boolean gameOver = false;
     private boolean searched;
+    private boolean townHunted;
     /**
      * Constructs the Treasure Hunter game.
      */
@@ -28,6 +29,8 @@ public class TreasureHunter {
         hunter = null;
         hardMode = false;
         isTest = false;
+        townHunted = false;
+        searched = false;
     }
 
     /**
@@ -152,7 +155,9 @@ public class TreasureHunter {
                 }
             }
         } else if (choice.equals("h")){
-            //a
+            if (!townHunted) {
+
+            }
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
