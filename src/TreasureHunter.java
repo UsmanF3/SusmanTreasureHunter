@@ -143,6 +143,8 @@ public class TreasureHunter {
             if(!hunter.hasItemInKit("shovel")) {
                 System.out.println("You can't dig for gold without a shovel");
             }
+        } else if (choice.equals("h")){
+            //a
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
