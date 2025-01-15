@@ -123,17 +123,17 @@ public class Town {
         double noTroubleChance;
         if (toughTown) {
             if (TreasureHunter.returnDifficulty().equals("easy")) {
-                noTroubleChance = 0.75;
-            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
                 noTroubleChance = 0.6;
+            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
+                noTroubleChance = 0.75;
             } else {
                 noTroubleChance = 0.66;
             }
         } else {
             if (TreasureHunter.returnDifficulty().equals("easy")) {
-                noTroubleChance = 0.25;
-            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
                 noTroubleChance = 0.4;
+            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
+                noTroubleChance = 0.25;
             } else {
                 noTroubleChance = 0.33;
             }
