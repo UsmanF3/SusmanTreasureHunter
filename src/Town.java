@@ -13,7 +13,8 @@ public class Town {
     private boolean toughTown;
     private boolean gameOver;
     private String treasure;
-    private boolean townSearched = false;
+    private boolean townHunted;
+    private boolean townSearched;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
@@ -29,7 +30,8 @@ public class Town {
         hunter = null;
         treasure = null;
         printMessage = "";
-
+        townSearched = false;
+        townHunted = false;
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
     }
@@ -68,6 +70,14 @@ public class Town {
         } else {
             printMessage += "\nWe're just a sleepy little town with mild mannered folk.";
         }
+    }
+
+    public boolean isTownHunted() {
+        return townHunted;
+    }
+
+    public void setTownHunted(boolean townHunted) {
+        this.townHunted = townHunted;
     }
 
     /**
@@ -186,4 +196,19 @@ public class Town {
             System.out.println("You dug but only found dirt.");
         }
     }
+
+    public void hunt() {
+        if (treasure.equals("Dust")) {
+            System.out.println("You dug up dust...");
+        } else {
+            if (!hunter.hasItemInTreasures(treasure)) {
+                System.out.println("You got a " + treasure + "!");
+                int treasureIdx = hunter.emptyPositionInTreasures();
+                hunter.addTreasure(treasureIdx, treasure);
+            } else {
+                System.out.println("You found a " + treasure + "! However, you already own one of these..");
+            }
+        }
+    }
+
 }

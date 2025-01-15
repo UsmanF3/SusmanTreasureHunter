@@ -124,6 +124,10 @@ public class Hunter {
         return false;
     }
 
+    public void addTreasure(int idx, String item) {
+        treasures[idx] = item;
+    }
+
     /**
      * Checks if the kit Array has the specified item.
      *
@@ -132,6 +136,16 @@ public class Hunter {
      */
     public boolean hasItemInKit(String item) {
         for (String tmpItem : kit) {
+            if (item.equals(tmpItem)) {
+                // early return
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean hasItemInTreasures(String item) {
+        for (String tmpItem : treasures) {
             if (item.equals(tmpItem)) {
                 // early return
                 return true;
@@ -208,6 +222,15 @@ public class Hunter {
     private int emptyPositionInKit() {
         for (int i = 0; i < kit.length; i++) {
             if (kit[i] == null) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int emptyPositionInTreasures() {
+        for (int i = 0; i < treasures.length; i++) {
+            if (treasures[i] == null) {
                 return i;
             }
         }

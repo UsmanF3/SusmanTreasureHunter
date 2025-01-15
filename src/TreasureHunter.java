@@ -116,6 +116,7 @@ public class TreasureHunter {
             System.out.println(Colors.GREEN + "(E)" + Colors.RESET + "xplore surrounding terrain.");
             System.out.println(Colors.GREEN + "(M)" + Colors.RESET + "ove on to a different town.");
             System.out.println(Colors.GREEN + "(L)" + Colors.RESET + "ook for trouble!");
+            System.out.println(Colors.GREEN + "(H)" + Colors.RESET + "unt for treasure.");
             System.out.println(Colors.GREEN + "(D)" + Colors.RESET + "ig for gold.");
             System.out.println("Give up the hunt and e" + Colors.GREEN + "(X)" + Colors.RESET + "it.");
             System.out.println();
@@ -156,8 +157,11 @@ public class TreasureHunter {
                 }
             }
         } else if (choice.equals("h")){
-            if (!townHunted) {
-
+            if (!currentTown.isTownHunted()) {
+                currentTown.hunt();
+                currentTown.setTownHunted(true);
+            } else {
+                System.out.println("You have already searched this town!");
             }
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
