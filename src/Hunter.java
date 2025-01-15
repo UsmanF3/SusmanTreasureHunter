@@ -172,6 +172,23 @@ public class Hunter {
         return printableKit;
     }
 
+    public String getTreasuresInventory() {
+        String printableKit = "";
+        String space = " ";
+
+        for (int i = 0; i<treasures.length-1; i++) {
+            if (treasures[i] != null) {
+                printableKit += Colors.GREEN + "a " +  treasures[i] + Colors.RESET + "," + space;
+            }
+        }
+        if (treasures[treasures.length-1]!=null) {
+            printableKit += Colors.GREEN + "and a " + treasures[treasures.length - 1] + Colors.RESET;
+        } else {
+            printableKit = printableKit.substring(0, printableKit.length()-2);
+        }
+        return printableKit;
+    }
+
     /**
      * @return A string representation of the hunter.
      */
@@ -179,6 +196,12 @@ public class Hunter {
         String str = hunterName + " has " + gold + Colors.YELLOW + " gold" + Colors.RESET;
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
+        }
+        str += "\nTreasures found: ";
+        if (treasuresIsEmpty()) {
+            str += "none";
+        } else {
+            str += getTreasuresInventory();
         }
         return str;
     }
@@ -207,6 +230,15 @@ public class Hunter {
      */
     private boolean kitIsEmpty() {
         for (String string : kit) {
+            if (string != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean treasuresIsEmpty() {
+        for (String string : treasures) {
             if (string != null) {
                 return false;
             }
