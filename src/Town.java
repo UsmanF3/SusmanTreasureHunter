@@ -194,6 +194,9 @@ public class Town {
      */
     private boolean checkItemBreak() {
         double rand = Math.random();
+        if (TreasureHunter.returnDifficulty().equals("easy")) {
+            return false;
+        }
         return (rand < 0.5);
     }
 
