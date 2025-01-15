@@ -13,7 +13,7 @@ public class Town {
     private boolean toughTown;
     private boolean gameOver;
     private String treasure;
-
+    private boolean townSearched = false;
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      *
@@ -42,6 +42,9 @@ public class Town {
         return printMessage;
     }
 
+    public boolean getSearched() {
+        return townSearched;
+    }
     /**
      * Assigns an object to the Hunter in town.
      *
@@ -176,7 +179,9 @@ public class Town {
         int successful = (int) (Math.random() * 2) + 1;
         if (successful == 2) {
             int amount = (int) (Math.random() * 20) + 1;
-            System.out.println("You dug up " + amount + Colors.YELLOW + "gold!" + Colors.RESET);
+            System.out.println("You dug up " + amount + Colors.YELLOW + " gold!" + Colors.RESET);
+            hunter.changeGold(amount);
+            townSearched = true;
         } else {
             System.out.println("You dug but only found dirt.");
         }
