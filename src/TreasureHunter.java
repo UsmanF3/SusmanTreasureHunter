@@ -15,9 +15,10 @@ public class TreasureHunter {
     // instance variables
     private Town currentTown;
     private Hunter hunter;
-    private boolean hardMode;
-    private boolean easyMode;
-    private boolean isTest;
+    private static String mode = "";
+    private static boolean hardMode;
+    private static boolean easyMode;
+    private static boolean isTest;
     private static boolean gameOver = false;
     private boolean searched;
     private boolean townHunted;
@@ -55,7 +56,7 @@ public class TreasureHunter {
         boolean repeat = true;
         while (repeat) {
             System.out.print("Which mode? (\"e\", \"n\", or \"h\".): ");
-            String mode = SCANNER.nextLine().toLowerCase();
+            mode = SCANNER.nextLine().toLowerCase();
             if (mode.equals("h")) {
                 hardMode = true;
                 hunter = new Hunter(name, 20);
@@ -81,6 +82,22 @@ public class TreasureHunter {
         }
     }
 
+    public static String returnDifficulty() {
+        if (mode.equals("h")) {
+            return "hard";
+        } else if (mode.equals("e")) {
+            return "easy";
+        }
+        else if (mode.equals("test")) {
+            return "normal";
+        }
+        else if (mode.equals("n")) {
+            return "normal";
+        }
+        else {
+            return " ";
+        }
+    }
     /**
      * Creates a new town and adds the Hunter to it.
      */

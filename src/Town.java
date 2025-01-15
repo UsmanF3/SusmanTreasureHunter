@@ -122,10 +122,21 @@ public class Town {
     public void lookForTrouble() {
         double noTroubleChance;
         if (toughTown) {
-            noTroubleChance = 0.66;
+            if (TreasureHunter.returnDifficulty().equals("easy")) {
+                noTroubleChance = 0.75;
+            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
+                noTroubleChance = 0.6;
+            } else {
+                noTroubleChance = 0.66;
+            }
         } else {
-
-            noTroubleChance = 0.33;
+            if (TreasureHunter.returnDifficulty().equals("easy")) {
+                noTroubleChance = 0.25;
+            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
+                noTroubleChance = 0.4;
+            } else {
+                noTroubleChance = 0.33;
+            }
         }
         if (Math.random() > noTroubleChance) {
             printMessage = "You couldn't find any trouble";
