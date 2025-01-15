@@ -124,6 +124,7 @@ public class Town {
         if (toughTown) {
             noTroubleChance = 0.66;
         } else {
+
             noTroubleChance = 0.33;
         }
         if (Math.random() > noTroubleChance) {

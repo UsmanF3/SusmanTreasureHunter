@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private boolean easyMode;
     private boolean isTest;
     private static boolean gameOver = false;
     private boolean searched;
@@ -51,20 +52,33 @@ public class TreasureHunter {
         System.out.println("Going hunting for the big treasure, eh?");
         System.out.print("What's your name, Hunter? ");
         String name = SCANNER.nextLine().toLowerCase();
-
-        System.out.print("Hard mode? (y/n): ");
-        String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
-            hardMode = true;
+        boolean repeat = true;
+        while (repeat) {
+            System.out.print("Which mode? (\"e\", \"n\", or \"h\".): ");
+            String mode = SCANNER.nextLine().toLowerCase();
+            if (mode.equals("h")) {
+                hardMode = true;
+                hunter = new Hunter(name, 20);
+                repeat = false;
+            } else if (mode.equals("e")) {
+                easyMode = true;
+                hunter = new Hunter(name, 40);
+                repeat = false;
+            }
+            else if (mode.equals("test")) {
+                isTest = true;
+                hunter = new Hunter(name, 0, isTest);
+                repeat = false;
+            }
+            else if (mode.equals("n")) {
+                // set hunter instance variable
+                hunter = new Hunter(name, 20);
+                repeat = false;
+            }
+            else {
+                System.out.println("Sorry, that is not an option");
+            }
         }
-        if (hard.equals("test")) {
-            isTest = true;
-            hunter = new Hunter(name, 0, isTest);
-        } else {
-            // set hunter instance variable
-            hunter = new Hunter(name, 20);
-        }
-
     }
 
     /**
@@ -79,6 +93,10 @@ public class TreasureHunter {
 
             // and the town is "tougher"
             toughness = 0.75;
+        }
+        else if (easyMode) {
+            markdown = 1;
+            toughness = 0.25;
         }
 
         // note that we don't need to access the Shop object
