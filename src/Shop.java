@@ -170,7 +170,7 @@ public class Shop {
                 return SWORD_COST;
             }
             else {
-                return 0;
+                return 7423700;
             }
         } else {
             return 0;
