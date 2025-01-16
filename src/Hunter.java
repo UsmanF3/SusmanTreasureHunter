@@ -84,7 +84,15 @@ public class Hunter {
         if (!hasItemInKit("sword")&&gold>costOfItem) {
             gold -= costOfItem;
         } else {
-            // three different cases, print different shopkeeper scared because of sword.
+            int message = (int) (Math.random() * 3) + 1;
+            if (message == 1) {
+                System.out.println("The shopkeeper saw your sword and got scared... you got the " + Colors.PURPLE + item + Colors.RESET + " for free.");
+            }
+            else if (message == 2) {
+                System.out.println("You gained the shopkeeper's respect after he saw that sharp thing... you got the " + Colors.PURPLE + item + Colors.RESET + " for free.");
+            } else {
+                System.out.println("The shopkeeper was happy after seeing your hand... you got the " + Colors.PURPLE + item + Colors.RESET + " for free.");
+            }
         }
         addItem(item);
         return true;
