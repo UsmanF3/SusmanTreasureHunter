@@ -78,10 +78,10 @@ public class Hunter {
      */
 
     public boolean buyItem(String item, int costOfItem) {
-        if (costOfItem == 0&&!item.equals("sword") || gold < costOfItem&&!TreasureHunter.returnDifficulty().equals("samurai") || hasItemInKit(item)) {
+        if (costOfItem == 0&&!item.equals("sword") || gold < costOfItem&&!hasItemInKit("sword") || hasItemInKit(item)) {
             return false;
         }
-        if (!TreasureHunter.returnDifficulty().equals("samurai")) {
+        if (!hasItemInKit("sword")&&gold>costOfItem) {
             gold -= costOfItem;
         } else {
             // three different cases, print different shopkeeper scared because of sword.
