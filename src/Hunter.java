@@ -20,7 +20,12 @@ public class Hunter {
     public Hunter(String hunterName, int startingGold, boolean testMode) {
         this.hunterName = hunterName;
         if (!testMode) {
-            kit = new String[7]; // only 7 possible items can be stored in kit
+            if (TreasureHunter.returnDifficulty().equals("samurai")) {
+                kit = new String[8];
+            }
+            else {
+                kit = new String[7];
+            }; // only 7 possible items can be stored in kit
         } else {
             kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots", "shovel"};
         }

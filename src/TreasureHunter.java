@@ -18,6 +18,7 @@ public class TreasureHunter {
     private static String mode = "";
     private static boolean hardMode;
     private static boolean easyMode;
+    private static boolean samurai;
     private static boolean isTest;
     private static boolean gameOver = false;
     private boolean searched;
@@ -76,6 +77,11 @@ public class TreasureHunter {
                 hunter = new Hunter(name, 20);
                 repeat = false;
             }
+            else if (mode.equals("s")) {
+                samurai = true;
+                hunter = new Hunter(name, 20);
+                repeat = false;
+            }
             else {
                 System.out.println("Sorry, that is not an option");
             }
@@ -93,6 +99,9 @@ public class TreasureHunter {
         }
         else if (mode.equals("n")) {
             return "normal";
+        }
+        else if (mode.equals("s")) {
+            return "samurai";
         }
         else {
             return " ";

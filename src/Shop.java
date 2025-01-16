@@ -15,6 +15,7 @@ public class Shop {
     private static final int BOAT_COST = 20;
     private static final int BOOT_COST = 10;
     private static final int SHOVEL_COST = 8;
+    private static final int SWORD_COST = 0;
 
 
     // static variables
@@ -31,7 +32,9 @@ public class Shop {
      */
     public Shop(double markdown) {
         this.markdown = markdown;
-        customer = null; // customer is set in the enter method
+        customer = null;
+        // customer is set in the enter method
+
     }
 
     /**
@@ -50,7 +53,7 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0) {
+            if (cost == 0 && !TreasureHunter.returnDifficulty().equals("samurai")) {
                 System.out.println("We ain't got none of those.");
             } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
@@ -91,6 +94,9 @@ public class Shop {
         str += Colors.PURPLE + "Boat: " + Colors.RESET + BOAT_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
         str += Colors.PURPLE + "Boots: " + Colors.RESET + BOOT_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
         str += Colors.PURPLE + "Shovel: " + Colors.RESET + SHOVEL_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
+        if (TreasureHunter.returnDifficulty().equals("samurai")) {
+            str += Colors.PURPLE + "Sword: " + Colors.RESET + SWORD_COST + Colors.YELLOW + " gold\n" + Colors.RESET;
+        }
         return str;
     }
 
@@ -159,6 +165,13 @@ public class Shop {
             return BOOT_COST;
         } else if (item.equals("shovel")) {
             return SHOVEL_COST;
+        } else if (TreasureHunter.returnDifficulty().equals("samurai")) {
+            if (item.equals("sword")) {
+                return SWORD_COST;
+            }
+            else {
+                return 0;
+            }
         } else {
             return 0;
         }
