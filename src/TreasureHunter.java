@@ -68,7 +68,7 @@ public class TreasureHunter {
             }
             else if (mode.equals("test")) {
                 isTest = true;
-                hunter = new Hunter(name, 0, isTest);
+                hunter = new Hunter(name, 100, isTest);
                 repeat = false;
             }
             else if (mode.equals("n")) {
@@ -204,7 +204,6 @@ public class TreasureHunter {
     }
 
     public static void gameOver() {
-        System.out.println("\nGame Over!");
         gameOver = true;
     }
 

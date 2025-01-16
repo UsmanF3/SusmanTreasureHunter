@@ -24,20 +24,24 @@ public class Hunter {
         } else {
             kit = new String[]{"water", "rope", "machete", "horse", "boat", "boots", "shovel"};
         }
-        treasures = new String[4];
+        treasures = new String[3];
         gold = startingGold;
     }
 
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
         kit = new String[7]; // only 5 possible items can be stored in kit
-        treasures = new String[4];
+        treasures = new String[3];
         gold = startingGold;
     }
 
     //Accessors
     public String getHunterName() {
         return hunterName;
+    }
+
+    public String[] getTreasures() {
+        return treasures;
     }
 
     public int getGold() {

@@ -152,6 +152,7 @@ public class Town {
                 if (hunter.getGold()==0) {
                     printMessage+="\nYou lost and couldn't afford to pay up..." + Colors.RESET;
                     System.out.println(printMessage);
+                    System.out.println("\nGame Over!");
                     TreasureHunter.gameOver();
                 } else {
                     printMessage += Colors.RESET + "\nYou lost the brawl and pay " + goldDiff + Colors.YELLOW + " gold." + Colors.RESET;
@@ -220,6 +221,13 @@ public class Town {
                 System.out.println("You got a " + treasure + "!");
                 int treasureIdx = hunter.emptyPositionInTreasures();
                 hunter.addTreasure(treasureIdx, treasure);
+                if (treasureIdx==hunter.getTreasures().length-1) {
+                    System.out.println("Congratulations, you have found the" + Colors.PURPLE + " last " + Colors.RESET + "of the " + Colors.YELLOW + "three treasures. " + Colors.GREEN + "You win!" + Colors.RESET);
+                    TreasureHunter.gameOver();
+                } else {
+                    System.out.println(treasureIdx);
+                    System.out.println(hunter.getTreasures().length-1);
+                }
             } else {
                 System.out.println("You found a " + treasure + "! However, you already own one of these..");
             }
