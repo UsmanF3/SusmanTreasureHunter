@@ -81,7 +81,7 @@ public class Hunter {
         if (costOfItem == 0&&!item.equals("sword") || gold < costOfItem&&!hasItemInKit("sword") || hasItemInKit(item)) {
             return false;
         }
-        if (!hasItemInKit("sword")&&gold>costOfItem) {
+        if (!hasItemInKit("sword")) {
             gold -= costOfItem;
         } else {
             int message = (int) (Math.random() * 3) + 1;

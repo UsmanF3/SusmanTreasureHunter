@@ -53,7 +53,7 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0 && !TreasureHunter.returnDifficulty().equals("samurai")) {
+            if (cost == 0 && (!TreasureHunter.returnDifficulty().equals("samurai")&&item.equals("sword"))) {
                 System.out.println("We ain't got none of those.");
             } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
@@ -170,7 +170,7 @@ public class Shop {
                 return SWORD_COST;
             }
             else {
-                return 7423700;
+                return 0;
             }
         } else {
             return 0;
