@@ -55,6 +55,8 @@ public class Shop {
             int cost = checkMarketPrice(item, true);
             if (cost == 0 && (!TreasureHunter.returnDifficulty().equals("samurai")&&item.equals("sword"))) {
                 System.out.println("We ain't got none of those.");
+            } else if (!item.equals("sword")&&cost==0) {
+                System.out.println("We ain't got none of those.");
             } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
                 String option = SCANNER.nextLine().toLowerCase();
@@ -67,7 +69,7 @@ public class Shop {
             System.out.print("You currently have the following items: " + customer.getInventory());
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, false);
-            if (cost == 0) {
+            if (cost == 0&&!item.equals("sword")&&!TreasureHunter.returnDifficulty().equals("samurai")) {
                 System.out.println("We don't want none of those.");
             } else {
                 System.out.print("It'll get you " + cost + Colors.YELLOW + " gold. " + Colors.RESET + "Sell it (y/n)? ");
@@ -165,8 +167,8 @@ public class Shop {
             return BOOT_COST;
         } else if (item.equals("shovel")) {
             return SHOVEL_COST;
-        } else if (TreasureHunter.returnDifficulty().equals("samurai")) {
-            if (item.equals("sword")) {
+        } else if (item.equals("sword")) {
+            if (TreasureHunter.returnDifficulty().equals("samurai")) {
                 return SWORD_COST;
             }
             else {

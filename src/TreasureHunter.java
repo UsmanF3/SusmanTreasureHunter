@@ -56,7 +56,7 @@ public class TreasureHunter {
         String name = SCANNER.nextLine().toLowerCase();
         boolean repeat = true;
         while (repeat) {
-            System.out.print("Which mode? (\"e\", \"n\", or \"h\".): ");
+            System.out.print("Which mode? (e)asy, (n)ormal, or (h)ard: ");
             mode = SCANNER.nextLine().toLowerCase();
             if (mode.equals("h")) {
                 hardMode = true;
@@ -142,6 +142,10 @@ public class TreasureHunter {
         currentTown.hunterArrives(hunter);
     }
 
+    private void resetPrint() {
+        currentTown.setPrintMessage("");
+    }
+
     /**
      * Displays the menu and receives the choice from the user.<p>
      * The choice is sent to the processChoice() method for parsing.<p>
@@ -152,6 +156,7 @@ public class TreasureHunter {
         while (!choice.equals("x")&&!gameOver) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
+            resetPrint();
             System.out.println("***");
             System.out.println(hunter.infoString());
             System.out.println(currentTown.infoString());
@@ -195,7 +200,7 @@ public class TreasureHunter {
             } else {
                 if (!currentTown.getSearched()) {
                     currentTown.dig();
-                    searched = true;
+                    currentTown.setTownSearched(true);
                 } else {
                     System.out.println("Sorry, you already dug here.");
                 }

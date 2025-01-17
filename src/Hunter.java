@@ -107,7 +107,7 @@ public class Hunter {
      * @return true if the item was successfully sold.
      */
     public boolean sellItem(String item, int buyBackPrice) {
-        if (buyBackPrice <= 0 || !hasItemInKit(item)) {
+        if (buyBackPrice <= 0&&!item.equals("sword")|| !hasItemInKit(item)) {
             return false;
         }
         gold += buyBackPrice;

@@ -40,8 +40,16 @@ public class Town {
         return terrain;
     }
 
+    public void setTownSearched(boolean townSearched) {
+        this.townSearched = townSearched;
+    }
+
     public String getLatestNews() {
         return printMessage;
+    }
+
+    public void setPrintMessage(String printMessage) {
+        this.printMessage = printMessage;
     }
 
     public boolean getSearched() {
@@ -55,11 +63,11 @@ public class Town {
     public void hunterArrives(Hunter hunter) {
         this.hunter = hunter;
         double rnd = Math.random();
-        if (rnd < (1.0 / 4)) {
+        if (rnd < .25) {
             treasure = "Crown";
-        } else if (rnd < (2.0 / 4)) {
+        } else if (rnd < .5) {
             treasure = "Trophy";
-        } else if (rnd < (3.0/4)) {
+        } else if (rnd < .75) {
             treasure = "Gem";
         } else {
             treasure = "Dust";
@@ -123,17 +131,17 @@ public class Town {
         double noTroubleChance;
         if (toughTown) {
             if (TreasureHunter.returnDifficulty().equals("easy")) {
-                noTroubleChance = 0.6;
-            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
                 noTroubleChance = 0.75;
+            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
+                noTroubleChance = 0.6;
             } else {
                 noTroubleChance = 0.66;
             }
         } else {
             if (TreasureHunter.returnDifficulty().equals("easy")) {
-                noTroubleChance = 0.4;
-            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
                 noTroubleChance = 0.25;
+            } else if (TreasureHunter.returnDifficulty().equals("hard")) {
+                noTroubleChance = 0.4;
             } else {
                 noTroubleChance = 0.33;
             }
@@ -162,6 +170,7 @@ public class Town {
                 printMessage += "\nYou won the brawl and receive " + goldDiff + Colors.YELLOW + " gold." + Colors.RESET;
                 hunter.changeGold(goldDiff);
             } else {
+                hunter.changeGold(-goldDiff);
                 printMessage += Colors.RED + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
                 if (hunter.getGold()==0) {
                     printMessage+="\nYou lost and couldn't afford to pay up..." + Colors.RESET;
@@ -171,7 +180,6 @@ public class Town {
                 } else {
                     printMessage += Colors.RESET + "\nYou lost the brawl and pay " + goldDiff + Colors.YELLOW + " gold." + Colors.RESET;
                 }
-                hunter.changeGold(-goldDiff);
             }
         }
     }
@@ -219,31 +227,30 @@ public class Town {
         int successful = (int) (Math.random() * 2) + 1;
         if (successful == 2) {
             int amount = (int) (Math.random() * 20) + 1;
-            System.out.println("You dug up " + amount + Colors.YELLOW + " gold!" + Colors.RESET);
+            printMessage += ("You dug up " + amount + Colors.YELLOW + " gold!" + Colors.RESET);
             hunter.changeGold(amount);
             townSearched = true;
         } else {
-            System.out.println("You dug but only found dirt.");
+            printMessage += ("You dug but only found dirt.");
         }
     }
 
     public void hunt() {
         if (treasure.equals("Dust")) {
-            System.out.println("You dug up dust...");
+            printMessage += ("You dug up dust...");
         } else {
             if (!hunter.hasItemInTreasures(treasure)) {
-                System.out.println("You got a " + treasure + "!");
+                printMessage += ("You got a " + treasure + "!");
                 int treasureIdx = hunter.emptyPositionInTreasures();
                 hunter.addTreasure(treasureIdx, treasure);
                 if (treasureIdx==hunter.getTreasures().length-1) {
                     System.out.println("Congratulations, you have found the" + Colors.PURPLE + " last " + Colors.RESET + "of the " + Colors.YELLOW + "three treasures. " + Colors.GREEN + "You win!" + Colors.RESET);
                     TreasureHunter.gameOver();
                 } else {
-                    System.out.println(treasureIdx);
-                    System.out.println(hunter.getTreasures().length-1);
+                    //nothing
                 }
             } else {
-                System.out.println("You found a " + treasure + "! However, you already own one of these..");
+                printMessage += ("\nYou found a " + treasure + "! However, you already own one of these..");
             }
         }
     }
